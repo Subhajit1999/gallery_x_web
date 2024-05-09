@@ -145,7 +145,7 @@ class _FullScreenImageViewState extends State<FullScreenImageView>
                       size: 20,
                       color: Colors.white,
                     ),
-                    onPressed: () => context.go("/home"),
+                    onPressed: () => context.pop(),
                   ),
                 )
               ],

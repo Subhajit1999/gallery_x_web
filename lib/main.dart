@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:online_photo_gallery/route/router.dart';
 
 import 'config.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  GoRouter.optionURLReflectsImperativeAPIs = true;
   runApp(const MainApp());
 }
 

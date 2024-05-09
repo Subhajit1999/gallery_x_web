@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisSpacing: 20),
                 itemBuilder: (context, index) {
                   return InkWell(
-                    onTap: () => context.go(
+                    onTap: () => context.push(
                         '/image/${galleryController.imageList[index].id}',
                         extra: galleryController.imageList[index]),
                     child: ImageCard(
