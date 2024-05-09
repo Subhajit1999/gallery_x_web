@@ -25,6 +25,10 @@ class _HomePageState extends State<HomePage> {
     
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {      // Initial Callback
       galleryController.loading.value = true;
+      if(galleryController.searchQuery.value.isNotEmpty) {
+        _queryParams['q'] = galleryController.searchQuery.value;
+        _searchController.value = TextEditingValue(text: _queryParams['q']);
+      }
       await galleryController.fetchImages(_queryParams);
       galleryController.loading.value = false;
     });
@@ -54,11 +58,13 @@ class _HomePageState extends State<HomePage> {
   // Search By Query
   Future<void> _handleSearch(String query) async {
     galleryController.clearImageList();
+
     if (query.isEmpty) {
       // all images data
       _queryParams = {};
     } else {
       _queryParams['q'] = query.toLowerCase().replaceAll(' ', '+');
+      galleryController.searchQuery.value = _queryParams['q'];
     }
     galleryController.loading.value = true;
     await galleryController.fetchImages(_queryParams);
@@ -112,14 +118,14 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: galleryController.loading.value
-          ? const SizedBox(
-              width: 30,
-              height: 30,
-              child: Center(
+          ? const Center(
+            child: SizedBox(
+                width: 30,
+                height: 30,
                 child: CircularProgressIndicator(
                   color: SECONDARY_COLOR,
-                ),
-              ))
+                )),
+          )
           : Obx(() => GridView.builder(
                 controller: scrollController,
                 itemCount: galleryController.imageList.length,

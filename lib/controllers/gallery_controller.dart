@@ -9,6 +9,7 @@ final GalleryController galleryController = Get.put(GalleryController());
 class GalleryController extends GetxController {
   var imageList = [].obs;
   var loading = false.obs;
+  var searchQuery = ''.obs;
 
   Future fetchImages(Map<String, dynamic> params) async {
     var images = await RemoteService.fetchImages(params: params).catchError(debugPrint);
