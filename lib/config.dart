@@ -9,8 +9,9 @@ const Color SECONDARY_COLOR = Color(0xFF8E518D);
 //
 const Color matteBlackColor = Color(0xFF3A3A3A);
 
-//
+// Size Functions
 Size screenSize(context) => MediaQuery.sizeOf(context);
+bool isMobileScreen(context) => screenSize(context).width <= 500;
 
 // Server Configs
 const String BASE_URL = "https://pixabay.com/api/";

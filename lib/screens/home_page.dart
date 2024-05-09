@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
 
   // Search Field Widget
   Widget _searchField() => Container(
-        width: screenSize(context).width * 0.25,
+        width: isMobileScreen(context)? screenSize(context).width * 0.5 : screenSize(context).width * 0.25,
         margin: const EdgeInsets.symmetric(vertical: 10),
         child: TextField(
           controller: _searchController,

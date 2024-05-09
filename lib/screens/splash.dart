@@ -13,7 +13,6 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   AnimationController? _controller;
   Animation? _animation;
-  // bool _initializing = true;
 
   @override
   void initState() {
