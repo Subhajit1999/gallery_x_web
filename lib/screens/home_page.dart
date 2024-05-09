@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       galleryController.loading.value = true;
       if(galleryController.searchQuery.value.isNotEmpty) {
         _queryParams['q'] = galleryController.searchQuery.value;
-        _searchController.value = TextEditingValue(text: _queryParams['q']);
+        _searchController.value = TextEditingValue(text: _queryParams['q'].replaceAll('+', ' '));
       }
       await galleryController.fetchImages(_queryParams);
       galleryController.loading.value = false;
